@@ -62,19 +62,20 @@ The function expects an event in the following format, which is automatically se
 Example Response
 Upon successful file retrieval, the function will return:
 
-json
-Copy code
+```json
 {
     "statusCode": 200,
     "body": "{\"message\": \"Successfully processed your-object-key\", \"content\": \"<file-content-here>\"}"
 }
+```
 If an error occurs during file retrieval or processing, the response will be:
 
-json
-Copy code
+```json
+
 {
     "statusCode": 500,
     "body": "{\"message\": \"Error processing the file\", \"error\": \"<error-message>\"}"
 }
+```
 Error Handling
 If the function is unable to retrieve the file from S3, an error message will be logged, and a 500 status code will be returned with the error details in the response.
