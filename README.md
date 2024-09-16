@@ -43,7 +43,7 @@ Set up an event notification on your S3 bucket to trigger the Lambda function wh
 Example Event Input
 The function expects an event in the following format, which is automatically sent by S3:
 
-json
+```json
 {
     "Records": [
         {
@@ -58,6 +58,7 @@ json
         }
     ]
 }
+```
 Example Response
 Upon successful file retrieval, the function will return:
 
