@@ -1,20 +1,28 @@
-S3 File Processing Lambda Function
-Overview
+# S3 File Processing Lambda Function
+## Overview
 This serverless application, built using AWS SAM (Serverless Application Model), processes files uploaded to an Amazon S3 bucket. The application is designed to trigger a Lambda function whenever a file with a .txt extension is uploaded to the S3 bucket. The Lambda function retrieves the file content, logs it, and returns a response. The application also integrates Amazon CloudWatch for monitoring and AWS Application Insights for automatic resource grouping and monitoring.
 
-Features
-Event-Driven Architecture: Automatically triggers a Lambda function when an S3 event (such as file upload) occurs.
-File Content Retrieval: Retrieves the content of the uploaded file from S3 and logs it.
-Monitoring & Tracing: The application is instrumented with AWS X-Ray for distributed tracing and CloudWatch for logging and monitoring.
-Application Insights Integration: Uses AWS Application Insights for enhanced monitoring, automatic problem detection, and resource grouping.
-Built with AWS SAM: Utilizes SAM to simplify the deployment and management of serverless resources.
-Architecture
+## Features
+### Event-Driven Architecture: 
+Automatically triggers a Lambda function when an S3 event (such as file upload) occurs.
+### File Content Retrieval: 
+Retrieves the content of the uploaded file from S3 and logs it.
+### Monitoring & Tracing: 
+The application is instrumented with AWS X-Ray for distributed tracing and CloudWatch for logging and monitoring.
+### Application Insights Integration: 
+Uses AWS Application Insights for enhanced monitoring, automatic problem detection, and resource grouping.
+### Built with AWS SAM: 
+Utilizes SAM to simplify the deployment and management of serverless resources.
+## Architecture
 The core components of the application are:
 
-S3 Bucket: Stores the uploaded files and triggers the Lambda function when a file is uploaded.
-Lambda Function: Processes the uploaded file by retrieving it from the S3 bucket and logging the content. This function is triggered by S3 events.
-AWS Application Insights: Provides enhanced observability into the application by automatically grouping resources and enabling auto-configuration for monitoring.
-SAM Template Details
+### S3 Bucket: 
+Stores the uploaded files and triggers the Lambda function when a file is uploaded.
+### Lambda Function: 
+Processes the uploaded file by retrieving it from the S3 bucket and logging the content. This function is triggered by S3 events.
+### AWS Application Insights: 
+Provides enhanced observability into the application by automatically grouping resources and enabling auto-configuration for monitoring.
+### SAM Template Details
 The following is an overview of the AWS resources defined in the SAM template (template.yaml):
 
 S3Bucket:
@@ -91,16 +99,23 @@ Resources:
         Ref: ApplicationResourceGroup
       AutoConfigurationEnabled: 'true'
 ```
-Key Properties in the Template
-S3 Bucket Event Trigger: The S3Bucket resource triggers the Lambda function when a new .txt file is uploaded, using the s3:ObjectCreated:* event.
-Policies: The Lambda function has AmazonS3FullAccess permissions, enabling it to retrieve the files from the S3 bucket.
-Tracing: The Lambda function and API Gateway (if present) are configured for tracing with AWS X-Ray to help with performance monitoring.
-Application Insights: Automatic setup for Application Insights enables enhanced monitoring for better visibility into the health and performance of the application.
-Prerequisites
-AWS Account: Ensure you have an AWS account with permissions to create and manage S3, Lambda, CloudWatch, and Application Insights resources.
-Node.js: Install Node.js for local development.
-AWS SAM CLI: Install the AWS SAM CLI to build and deploy the application.
-Deployment Instructions
+## Key Properties in the Template
+### S3 Bucket Event Trigger: 
+The S3Bucket resource triggers the Lambda function when a new .txt file is uploaded, using the s3:ObjectCreated:* event.
+### Policies: 
+The Lambda function has AmazonS3FullAccess permissions, enabling it to retrieve the files from the S3 bucket.
+### Tracing: 
+The Lambda function and API Gateway (if present) are configured for tracing with AWS X-Ray to help with performance monitoring.
+### Application Insights: 
+Automatic setup for Application Insights enables enhanced monitoring for better visibility into the health and performance of the application.
+## Prerequisites
+### AWS Account: 
+Ensure you have an AWS account with permissions to create and manage S3, Lambda, CloudWatch, and Application Insights resources.
+### Node.js: 
+Install Node.js for local development.
+### AWS SAM CLI: 
+Install the AWS SAM CLI to build and deploy the application.
+## Deployment Instructions
 Build the Application:
 
 ```bash
@@ -112,12 +127,12 @@ sam deploy --guided
 ```
 This command will package the Lambda function and deploy it along with the S3 bucket, Application Insights, and other resources defined in the template.
 
-Monitor the Application:
+## Monitor the Application:
 
 Use CloudWatch Logs to view logs of the Lambda function.
 Use AWS X-Ray for tracing and performance analysis.
 Use AWS Application Insights for automatic problem detection and resource monitoring.
-Example S3 Event Input
+### Example S3 Event Input
 The Lambda function expects an event in the following format, which is automatically sent by S3:
 
 ```json
@@ -136,7 +151,7 @@ The Lambda function expects an event in the following format, which is automatic
     ]
 }
 ```
-Example Response
+## Example Response
 Upon successful file retrieval and processing, the function returns:
 
 ```json
