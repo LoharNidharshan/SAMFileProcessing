@@ -120,8 +120,8 @@ Build the Application:
 
 ```bash
 sam build
-Deploy the Application:
 ```
+## Deploy the Application:
 ```bash
 sam deploy --guided
 ```
